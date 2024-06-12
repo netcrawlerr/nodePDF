@@ -1,0 +1,26 @@
+{
+  "name": "pdf-generating",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ironsoftware/ironpdf": "^2024.5.1",
+    "@ironsoftware/ironpdf-engine-windows-x64": "^2024.5.1",
+    "blob-stream": "^0.1.3",
+    "express": "^4.19.2",
+    "hbs": "^4.2.0",
+    "html-pdf": "^3.0.1",
+    "nodemon": "^3.1.3",
+    "pdfkit": "^0.15.0",
+    "puppeteer": "^22.10.1",
+    "uuid": "^9.0.1"
+  }
+}

@@ -1,0 +1,130 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Report</title>
+    {{! <link rel="stylesheet" href="/viewReport.css" /> }}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body
+    style="font-family: Arial, Helvetica, sans-serif; marin:0; padding: 0; background-color: blueviolet;"
+  >
+    <nav>
+      <img src="/logo.png" alt="HU PR PORTAL Logo" />
+      <h1>HU PR PORTAL</h1>
+      <a href="/generatepdf">Generate PDF</a>
+      <div class="dropdown">
+        <span class="account-icon" onclick="toggleDropdown()"><i
+            class="fa-regular fa-user"
+          ></i></span>
+
+        <div class="dropdown-content" id="dropdownContent">
+          <a href="/userDashboard">Dashboard</a>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container"
+      style="display: flex; max-width: 1200px; margin: auto; justify-content: flex-start;"
+    >
+      <div
+        class="sidebar"
+        style="width: 200px; padding: 20px; background-color: #FFF; border-right: 1px solid #ccc;"
+      >
+        <h2 style="font-size: 18px; margin-bottom: 20px; margin-top: 0;">Report
+          Topics</h2>
+        <p style="margin-bottom: 20px;">Click sidebar buttons to view reports</p>
+        <a href="/viewReport1"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+            id="report1Btn"
+          >Report 1</button></a>
+        <a href="/viewReport2"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 2</button></a>
+        <a href="/viewReport3"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 3</button></a>
+        <a href="/viewReport4"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 4</button></a>
+        <a href="/viewReport5"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 5</button></a>
+        <a href="/viewReport6"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 6</button></a>
+        <a href="/viewReport7"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 7</button></a>
+        <a href="/viewReport8"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 8</button></a>
+        <a href="/viewReport9"><button
+            style="display: block; width: 100%; padding: 10px; margin-bottom: 10px; background-color: #10669f;"
+          >Report 9</button></a>
+      </div>
+
+      <div class="report-details">
+        <form id="reportForm" action="/tasks/viewReport" method="POST">
+          <input type="hidden" id="goal_id" name="goal_id" value={{goal_id}} />
+          <button type="submit" id="showReportsBtn">Show Reports</button>
+        </form>
+
+        <div id="reportTopics">
+          <div class="report-details">
+            <h1 id="reportTitle">Report 1 Details</h1>
+            <div id="reportContent">
+              {{#if reports}}
+                <form
+                  id="form-textarea"
+                  action="/tasks/editReport"
+                  method="post"
+                >
+                  <input
+                    type="hidden"
+                    id="goal_id"
+                    name="goal_id"
+                    value="{{goal_id}}"
+                  />
+                  <ol>
+                    {{#each reports}}
+                      <div style="display: flex; align-items: center;">
+                        <textarea
+                          name="reports[{{@index}}]"
+                          disabled
+                          style="flex-grow: 1; margin-right: 10px;"
+                        >{{this.report_details}}</textarea>
+                        <i
+                          class="fas fa-edit"
+                          style="color: #FFD43B; font-size: 26px;"
+                          onclick="toggleEdit()"
+                        ></i>
+                      </div>
+                    {{/each}}
+                  </ol>
+                  <input
+                    type="submit"
+                    value="Submit Edit"
+                    style="padding: 5px;"
+                  />
+                </form>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleEdit() { var textAreas =
+      document.querySelectorAll('textarea'); textAreas.forEach(textArea => {
+      textArea.disabled = false; }); }
+    </script>
+    <script src="/viewReport.js"></script>
+  </body>
+</html>
